@@ -6,6 +6,7 @@ import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
 import Support from '../Support/Support';
 import Comments from '../Comments/Comments';
+import Review from '../Review/Review';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
             <Route path='/understanding' element={<Understanding/>}></Route>
             <Route path='/support' element={<Support/>}></Route>
             <Route path='/comments' element={<Comments/>}></Route>
+            <Route path='/review' element={<Review/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

@@ -9,7 +9,7 @@ function Comments( props ){
     // const[ name, setName ]=useState( null );
     const dispatch = useDispatch();
 
-    const[ comments, setComments ]=useState( 0 ); //capture feedback input
+    const[ comments, setComments ]=useState( '' ); //capture feedback input
 
     const onCommentsChange = () =>{ //input capture
         console.log( 'in handleInput:', event.target.value);
@@ -20,7 +20,7 @@ function Comments( props ){
 
     const nextButton = () => { 
         console.log('clicked next' );
-        dispatch( { type: 'ADD_COMMENTS',  payload: comments } ) 
+        dispatch( { type: 'ADD_FEEDBACK',  payload: {comments: comments} } ) 
     }
 
     return(
@@ -29,7 +29,7 @@ function Comments( props ){
             <TextField type="text" multiline maxRows={6} style={{ width: 500}} onChange={(event ) =>onCommentsChange ( event )}></TextField>
             <br/>
             <br/>
-            <Button onClick={nextButton}> <Link to="/google">NEXT</Link> </Button>
+            <Button onClick={nextButton}> <Link to="/review">NEXT</Link> </Button>
         </div>
     )
 }

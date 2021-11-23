@@ -8,20 +8,19 @@ import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 
 const feedback = ( state={}, action)=>{
-  if (action.type === 'ADD_FEELING') {
-    return{...state, feeling: action.payload};
+  if (action.type === 'ADD_FEEDBACK') {
+    console.log('index received payload of:', action.payload);
+    let newState = {...state, ...action.payload};
+    console.log("new state:", newState);
+    return newState;
   }
-  else if (action.type === 'ADD_UNDERSTANDING') {
-    return{...state, understanding: action.payload};
-  }
-  else if (action.type === 'ADD_SUPPORT') {
-    return{...state, support: action.payload};
-  }
-  else if (action.type === 'ADD_COMMENTS') {
-    return{...state, comments: action.payload};
+  else if (action.type === 'EMPTY'){
+    return {};
   }
   return state;
 }
+
+
 
 const storeInstance = createStore(
   combineReducers(

@@ -9,7 +9,7 @@ function Understanding( props ){
     // const[ name, setName ]=useState( null );
     const dispatch = useDispatch();
 
-    const[ understanding, setUnderstanding ]=useState( 0 ); //capture feedback input
+    const[ understanding, setUnderstanding ]=useState( 3 ); //capture feedback input
 
     const onUnderstandingChange = () =>{ //input capture
         console.log( 'in handleInput:', event.target.value);
@@ -20,7 +20,7 @@ function Understanding( props ){
 
     const nextButton = () => { //button click handler
         console.log('clicked next' );
-        dispatch( { type: 'ADD_UNDERSTANDING',  payload: understanding } ) 
+        dispatch( { type: 'ADD_FEEDBACK',  payload: {understanding: understanding } } ) 
     }
 
     return(

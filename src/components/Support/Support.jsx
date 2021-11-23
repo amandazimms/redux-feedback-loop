@@ -9,7 +9,7 @@ function Support( props ){
     // const[ name, setName ]=useState( null );
     const dispatch = useDispatch();
 
-    const[ support, setSupport ]=useState( 0 ); //capture feedback input
+    const[ support, setSupport ]=useState( 3 ); //capture feedback input
 
     const onSupportChange = () =>{ //input capture
         console.log( 'in handleInput:', event.target.value);
@@ -20,7 +20,7 @@ function Support( props ){
 
     const nextButton = () => { 
         console.log('clicked next' );
-        dispatch( { type: 'ADD_SUPPORT',  payload: support } ) 
+        dispatch( { type: 'ADD_FEEDBACK',  payload: {support: support} } ) 
     }
 
     return(

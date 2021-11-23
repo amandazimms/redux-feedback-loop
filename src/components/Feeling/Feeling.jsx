@@ -10,7 +10,7 @@ function Feeling( props ){
     // const[ name, setName ]=useState( null );
     const dispatch = useDispatch();
 
-    const[ feeling, setFeeling ]=useState( 0 ); //capture feedback input
+    const[ feeling, setFeeling ]=useState( 3 ); //capture feedback input
 
     const onFeelingChange = () =>{ //input capture
         console.log( 'in handleInput:', event.target.value);
@@ -21,7 +21,7 @@ function Feeling( props ){
 
     const nextButton = () => { //button click handler
         console.log('clicked next' );
-        dispatch( { type: 'ADD_FEELING',  payload: feeling } ) 
+        dispatch( { type: 'ADD_FEEDBACK',  payload: {feeling: feeling} } ) 
     }
 
     return(
