@@ -8,8 +8,9 @@ import { Link } from 'react-router-dom';
 function Understanding( props ){
     // const[ name, setName ]=useState( null );
     const dispatch = useDispatch();
+    const feedback = useSelector(store => store.feedback);
 
-    const[ understanding, setUnderstanding ]=useState( 3 ); //capture feedback input
+    const[ understanding, setUnderstanding ]=useState( feedback.understanding || 3 ); //capture feedback input
 
     const onUnderstandingChange = () =>{ //input capture
         console.log( 'in handleInput:', event.target.value);
@@ -18,7 +19,7 @@ function Understanding( props ){
         console.log( 'understanding:', understanding );
     }
 
-    const nextButton = () => { //button click handler
+    const dispatchThisToFeedbackStore = () => { //button click handler
         console.log('clicked next' );
         dispatch( { type: 'ADD_FEEDBACK',  payload: {understanding: understanding } } ) 
     }
@@ -26,10 +27,11 @@ function Understanding( props ){
     return(
         <div>
             <h1>How well are you understanding the content?</h1>
-            <TextField type="number" inputProps={{ min: "1", max: "5", defaultValue: "3" }} onChange={(event ) =>onUnderstandingChange ( event )}></TextField>
+            <TextField type="number" inputProps={{ min: "1", max: "5", defaultValue: feedback.understanding || '3' }} onChange={(event ) =>onUnderstandingChange ( event )}></TextField>
             <br/>
             <br/>
-            <Button onClick={nextButton}> <Link to="/support">NEXT</Link> </Button>
+            <Button onClick={dispatchThisToFeedbackStore}> <Link to="/">BACK</Link> </Button>
+            <Button onClick={dispatchThisToFeedbackStore}> <Link to="/support">NEXT</Link> </Button>
         </div>
     )
 }

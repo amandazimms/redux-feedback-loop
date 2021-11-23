@@ -9,8 +9,9 @@ import { Link } from 'react-router-dom';
 function Feeling( props ){
     // const[ name, setName ]=useState( null );
     const dispatch = useDispatch();
+    const feedback = useSelector(store => store.feedback);
 
-    const[ feeling, setFeeling ]=useState( 3 ); //capture feedback input
+    const[ feeling, setFeeling ]=useState( feedback.feeling || '3' ); //capture feedback input
 
     const onFeelingChange = () =>{ //input capture
         console.log( 'in handleInput:', event.target.value);
@@ -19,7 +20,7 @@ function Feeling( props ){
         console.log( 'feeling:', feeling );
     }
 
-    const nextButton = () => { //button click handler
+    const dispatchThisToFeedbackStore = () => { //button click handler
         console.log('clicked next' );
         dispatch( { type: 'ADD_FEEDBACK',  payload: {feeling: feeling} } ) 
     }
@@ -27,10 +28,10 @@ function Feeling( props ){
     return(
         <div>
             <h1>How are you feeling today?</h1>
-            <TextField type="number" inputProps={{ min: "1", max: "5", defaultValue: "3" }} onChange={(event ) =>onFeelingChange ( event )}></TextField>
+            <TextField type="number" inputProps={{ min: "1", max: "5", defaultValue: feedback.feeling || '3' }} onChange={(event ) =>onFeelingChange ( event )}></TextField>
             <br/>
             <br/>
-            <Button onClick={nextButton}> <Link to="/understanding">NEXT</Link> </Button>
+            <Button onClick={dispatchThisToFeedbackStore}> <Link to="/understanding">NEXT</Link> </Button>
         </div>
     )
 }

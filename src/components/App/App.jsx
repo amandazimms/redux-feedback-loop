@@ -7,6 +7,7 @@ import Understanding from '../Understanding/Understanding';
 import Support from '../Support/Support';
 import Comments from '../Comments/Comments';
 import Review from '../Review/Review';
+import Success from '../Success/Success';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
             <Route path='/support' element={<Support/>}></Route>
             <Route path='/comments' element={<Comments/>}></Route>
             <Route path='/review' element={<Review/>}></Route>
+            <Route path='/success' element={<Success/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

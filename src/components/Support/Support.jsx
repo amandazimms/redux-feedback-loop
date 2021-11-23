@@ -8,8 +8,9 @@ import { Link } from 'react-router-dom';
 function Support( props ){
     // const[ name, setName ]=useState( null );
     const dispatch = useDispatch();
+    const feedback = useSelector(store => store.feedback);
 
-    const[ support, setSupport ]=useState( 3 ); //capture feedback input
+    const[ support, setSupport ]=useState( feedback.support || 3 ); //capture feedback input
 
     const onSupportChange = () =>{ //input capture
         console.log( 'in handleInput:', event.target.value);
@@ -18,7 +19,7 @@ function Support( props ){
     }
 
 
-    const nextButton = () => { 
+    const dispatchThisToFeedbackStore = () => { 
         console.log('clicked next' );
         dispatch( { type: 'ADD_FEEDBACK',  payload: {support: support} } ) 
     }
@@ -26,10 +27,11 @@ function Support( props ){
     return(
         <div>
             <h1>How well are you being supported?</h1>
-            <TextField type="number" inputProps={{ min: "1", max: "5", defaultValue: "3" }} onChange={(event ) =>onSupportChange ( event )}></TextField>
+            <TextField type="number" inputProps={{ min: "1", max: "5", defaultValue: feedback.support || '3' }} onChange={(event ) =>onSupportChange ( event )}></TextField>
             <br/>
             <br/>
-            <Button onClick={nextButton}> <Link to="/comments">NEXT</Link> </Button>
+            <Button onClick={dispatchThisToFeedbackStore}> <Link to="/understanding">BACK</Link> </Button>
+            <Button onClick={dispatchThisToFeedbackStore}> <Link to="/comments">NEXT</Link> </Button>
         </div>
     )
 }

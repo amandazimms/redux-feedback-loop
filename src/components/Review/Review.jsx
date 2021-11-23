@@ -24,11 +24,12 @@ function Review( props ){
     return(
         <div>
             <h1>Review Your Feedback</h1>
-            <p>Feelings: {JSON.stringify(feedback)}</p>
-            <p>Understanding: {feedback[1]}</p>
-            <p>Support: {feedback[2]}</p>
-            <p>Comments: {feedback[3]}</p>
-            <Button onClick={postFeedback}>Submit</Button>
+            <p>Feelings: {feedback.feeling}</p>
+            <p>Understanding: {feedback.understanding}</p>
+            <p>Support: {feedback.support}</p>
+            <p>Comments: {feedback.comments}</p>
+            <Button > <Link to="/comments">Back</Link> </Button>
+            <Button onClick={postFeedback}> <Link to="/success">Submit</Link> </Button>
         </div>
     )
 }

@@ -8,8 +8,9 @@ import { Link } from 'react-router-dom';
 function Comments( props ){
     // const[ name, setName ]=useState( null );
     const dispatch = useDispatch();
+    const feedback = useSelector(store => store.feedback);
 
-    const[ comments, setComments ]=useState( '' ); //capture feedback input
+    const[ comments, setComments ]=useState( feedback.comments || '' ); //capture feedback input
 
     const onCommentsChange = () =>{ //input capture
         console.log( 'in handleInput:', event.target.value);
@@ -18,7 +19,7 @@ function Comments( props ){
     }
 
 
-    const nextButton = () => { 
+    const dispatchThisToFeedbackStore = () => { 
         console.log('clicked next' );
         dispatch( { type: 'ADD_FEEDBACK',  payload: {comments: comments} } ) 
     }
@@ -26,10 +27,11 @@ function Comments( props ){
     return(
         <div>
             <h1>Any comments you want to leave?</h1>
-            <TextField type="text" multiline maxRows={6} style={{ width: 500}} onChange={(event ) =>onCommentsChange ( event )}></TextField>
+            <TextField type="text" multiline maxRows={6} style={{ width: 500}} inputProps={{ defaultValue: feedback.comments || ''}} onChange={(event ) =>onCommentsChange ( event )}></TextField>
             <br/>
             <br/>
-            <Button onClick={nextButton}> <Link to="/review">NEXT</Link> </Button>
+            <Button onClick={dispatchThisToFeedbackStore}> <Link to="/support">BACK</Link> </Button>
+            <Button onClick={dispatchThisToFeedbackStore}> <Link to="/review">NEXT</Link> </Button>
         </div>
     )
 }
