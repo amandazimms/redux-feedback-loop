@@ -26,8 +26,10 @@ function Support( props ){
     return(
         <div>
             <h1>How well are you being supported?</h1>
-            <TextField type="number" inputProps={{ min: "1", max: "5" }} onChange={(event ) =>onSupportChange ( event )}></TextField>
-            <Button onClick={nextButton}> <Link to="/google">NEXT</Link> </Button>
+            <TextField type="number" inputProps={{ min: "1", max: "5", defaultValue: "3" }} onChange={(event ) =>onSupportChange ( event )}></TextField>
+            <br/>
+            <br/>
+            <Button onClick={nextButton}> <Link to="/comments">NEXT</Link> </Button>
         </div>
     )
 }

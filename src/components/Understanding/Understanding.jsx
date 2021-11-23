@@ -26,7 +26,9 @@ function Understanding( props ){
     return(
         <div>
             <h1>How well are you understanding the content?</h1>
-            <TextField type="number" inputProps={{ min: "1", max: "5" }} onChange={(event ) =>onUnderstandingChange ( event )}></TextField>
+            <TextField type="number" inputProps={{ min: "1", max: "5", defaultValue: "3" }} onChange={(event ) =>onUnderstandingChange ( event )}></TextField>
+            <br/>
+            <br/>
             <Button onClick={nextButton}> <Link to="/support">NEXT</Link> </Button>
         </div>
     )

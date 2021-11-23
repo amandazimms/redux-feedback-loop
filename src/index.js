@@ -17,6 +17,9 @@ const feedback = ( state={}, action)=>{
   else if (action.type === 'ADD_SUPPORT') {
     return{...state, support: action.payload};
   }
+  else if (action.type === 'ADD_COMMENTS') {
+    return{...state, comments: action.payload};
+  }
   return state;
 }
 
