@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
+import Feeling from '../Feeling/Feeling';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
 
 function App() {
 
@@ -10,6 +13,12 @@ function App() {
         <h1 className='App-title'>Feedback!</h1>
         <h4>Don't forget it!</h4>
       </header>
+      <BrowserRouter>
+        <Routes>
+             {/* reminder that the Admin page should not be linked, only reachable by visiting /Admin in URL  */}
+            <Route path='/' element={<Feeling/>}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
