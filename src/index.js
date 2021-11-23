@@ -14,6 +14,9 @@ const feedback = ( state={}, action)=>{
   else if (action.type === 'ADD_UNDERSTANDING') {
     return{...state, understanding: action.payload};
   }
+  else if (action.type === 'ADD_SUPPORT') {
+    return{...state, support: action.payload};
+  }
   return state;
 }
 

@@ -11,18 +11,12 @@ function Feeling( props ){
     const dispatch = useDispatch();
 
     const[ feeling, setFeeling ]=useState( 0 ); //capture feedback input
-    const [ link, setLink ] = useState(false); //conren for button link
 
     const onFeelingChange = () =>{ //input capture
         console.log( 'in handleInput:', event.target.value);
         
         setFeeling( event.target.value );
         console.log( 'feeling:', feeling );
-            if( event.target.value > 0 && event.target.value < 6 ){
-                setLink( true )} //making sure input is between 1 and 5
-            else {
-                setLink( false );
-        }
     }
 
     const nextButton = () => { //button click handler
