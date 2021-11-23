@@ -14,15 +14,14 @@ function Understanding( props ){
     const[ understanding, setUnderstanding ]=useState( feedback.understanding || 3 ); //capture feedback input
 
     const onUnderstandingChange = () =>{ //input capture
-        console.log( 'in handleInput:', event.target.value);
-        
         setUnderstanding( event.target.value );
-        console.log( 'understanding:', understanding );
     }
 
     const dispatchThisToFeedbackStore = () => { //button click handler
-        console.log('clicked next' );
+        //needs to when either next/back are clicked, to make sure user's choices are saved no matter what
         dispatch( { type: 'ADD_FEEDBACK',  payload: {understanding: understanding } } ) 
+        // if payloads are sent as key-value pairs, it simplifies the number of ifs in index.js
+
     }
 
     return(

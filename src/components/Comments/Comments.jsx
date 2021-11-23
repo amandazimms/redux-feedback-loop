@@ -14,15 +14,14 @@ function Comments( props ){
     const[ comments, setComments ]=useState( feedback.comments || '' ); //capture feedback input
 
     const onCommentsChange = () =>{ //input capture
-        console.log( 'in handleInput:', event.target.value);
         setComments( event.target.value );
-        console.log( 'comments:', comments );
     }
 
 
     const dispatchThisToFeedbackStore = () => { 
-        console.log('clicked next' );
+        //needs to when either next/back are clicked, to make sure user's choices are saved no matter what
         dispatch( { type: 'ADD_FEEDBACK',  payload: {comments: comments} } ) 
+        // if payloads are sent as key-value pairs, it simplifies the number of ifs in index.js
     }
 
     return(

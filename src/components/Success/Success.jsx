@@ -16,6 +16,7 @@ function Success( props ){
             <br/>
             <br/>
             <Button> <Link to="/">Leave More Feedback</Link> </Button>
+            {/* (returns to 'feeling' default/beginning page) */}
         </div>
     )
 }

@@ -4,6 +4,7 @@ import { Button } from '@material-ui/core';
 import { TextField } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { PieChartSharp } from '@material-ui/icons';
 
 
 function Feeling( props ){
@@ -14,16 +15,13 @@ function Feeling( props ){
 
     const[ feeling, setFeeling ]=useState( feedback.feeling || '3' ); //capture feedback input
 
-    const onFeelingChange = () =>{ //input capture
-        console.log( 'in handleInput:', event.target.value);
-        
+    const onFeelingChange = () =>{ //input capture        
         setFeeling( event.target.value );
-        console.log( 'feeling:', feeling );
     }
 
     const dispatchThisToFeedbackStore = () => { //button click handler
-        console.log('clicked next' );
         dispatch( { type: 'ADD_FEEDBACK',  payload: {feeling: feeling} } ) 
+        // if payloads are sent as key-value pairs, it simplifies the number of ifs in index.js
     }
 
     return(
