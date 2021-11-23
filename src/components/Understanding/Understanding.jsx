@@ -6,9 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function Understanding( props ){
-    // const[ name, setName ]=useState( null );
-    const dispatch = useDispatch();
     const feedback = useSelector(store => store.feedback);
+    //feedback is an object which holds all our ratings as key-value pairs
+
+    const dispatch = useDispatch();
 
     const[ understanding, setUnderstanding ]=useState( feedback.understanding || 3 ); //capture feedback input
 

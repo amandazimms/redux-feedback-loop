@@ -7,8 +7,9 @@ import { Link } from 'react-router-dom';
 
 
 function Feeling( props ){
-    // const[ name, setName ]=useState( null );
     const dispatch = useDispatch();
+    //feedback is an object which holds all our ratings as key-value pairs
+
     const feedback = useSelector(store => store.feedback);
 
     const[ feeling, setFeeling ]=useState( feedback.feeling || '3' ); //capture feedback input

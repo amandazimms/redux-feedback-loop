@@ -20,6 +20,7 @@ function App() {
       <BrowserRouter>
         <Routes>
             <Route path='/' element={<Feeling/>}></Route>
+            {/* since the feeling page displays as default, make it route to / */}
             <Route path='/understanding' element={<Understanding/>}></Route>
             <Route path='/support' element={<Support/>}></Route>
             <Route path='/comments' element={<Comments/>}></Route>

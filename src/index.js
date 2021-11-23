@@ -9,13 +9,13 @@ import logger from 'redux-logger';
 
 const feedback = ( state={}, action)=>{
   if (action.type === 'ADD_FEEDBACK') {
-    console.log('index received payload of:', action.payload);
-    let newState = {...state, ...action.payload};
-    console.log("new state:", newState);
-    return newState;
+    //if payloads are sent in the format {key: value}, e.g. {feeling: 4}, only 'ADD' action type is needed
+    return {...state, ...action.payload};
+    //spread the payload into the state object, since it is itself an object.
   }
   else if (action.type === 'EMPTY'){
     return {};
+    //if EMPTY is received, return an empty object to 'clear'
   }
   return state;
 }
