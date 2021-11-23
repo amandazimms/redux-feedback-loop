@@ -6,18 +6,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
-function Feeling( props ){
+function Understanding( props ){
     // const[ name, setName ]=useState( null );
     const dispatch = useDispatch();
 
-    const[ feeling, setFeeling ]=useState( 0 ); //capture feedback input
+    const[ understanding, setUnderstanding ]=useState( 0 ); //capture feedback input
     const [ link, setLink ] = useState(false); //conren for button link
 
-    const onFeelingChange = () =>{ //input capture
+    const onUnderstandingChange = () =>{ //input capture
         console.log( 'in handleInput:', event.target.value);
         
-        setFeeling( event.target.value );
-        console.log( 'feeling:', feeling );
+        setUnderstanding( event.target.value );
+        console.log( 'understanding:', understanding );
             if( event.target.value > 0 && event.target.value < 6 ){
                 setLink( true )} //making sure input is between 1 and 5
             else {
@@ -27,16 +27,16 @@ function Feeling( props ){
 
     const nextButton = () => { //button click handler
         console.log('clicked next' );
-        dispatch( { type: 'ADD_FEELING',  payload: feeling } ) 
+        dispatch( { type: 'ADD_UNDERSTANDING',  payload: understanding } ) 
     }
 
     return(
         <div>
-            <h1>How are you feeling today?</h1>
-            <TextField type="number" inputProps={{ min: "1", max: "5" }} onChange={(event ) =>onFeelingChange ( event )}></TextField>
+            <h1>How well are you understanding the content?</h1>
+            <TextField type="number" inputProps={{ min: "1", max: "5" }} onChange={(event ) =>onUnderstandingChange ( event )}></TextField>
             <Button onClick={nextButton}> <Link to="/understanding">NEXT</Link> </Button>
         </div>
     )
 }
 
-export default Feeling;
+export default Understanding;
